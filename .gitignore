@@ -1,15 +1,52 @@
+#---------------------------------------------------
+# Android Studio and IntelliJ IDEA
+#---------------------------------------------------
+.idea/
+.gradle/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
 local.properties
+.DS_Store
+
+#---------------------------------------------------
+# Build and Output
+#---------------------------------------------------
+/build
+/out
+/captures
+/exploded-aar
+
+# Generated files
+/gen/
+/src/main/assets/
+/src/main/res/raw/
+/src/main/res/layout/
+/src/main/res/values/
+
+# Gradle files
+gradle-wrapper.jar
+
+# Keystore files
+*.jks
+*.keystore
+
+# Local Configuration
+# Environment variables/API keys used for local testing
+secrets.properties
+
+#---------------------------------------------------
+# Android specific
+#---------------------------------------------------
+# By default, Android modules use their own build folders, 
+# but this is here for redundancy.
+**/build/
+.cxx/
+*.apk
+*.aab
+*.aar
+*.so
+
+# Log files
+*.log
+
+# Kotlin Script Cache
+.kotlin/

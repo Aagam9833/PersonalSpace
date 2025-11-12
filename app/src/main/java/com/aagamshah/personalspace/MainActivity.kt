@@ -38,14 +38,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true,)
 @Composable
 fun GreetingPreview() {
     PersonalSpaceTheme {
         Greeting("Android")
     }
 }
-//
-//git remote add origin https://github.com/Aagam9833/PersonalSpace.git
-//git branch -M master
-//git push -u origin master

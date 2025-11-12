@@ -6,9 +6,7 @@ plugins {
 
 android {
     namespace = "com.aagamshah.personalspace"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk =36
 
     defaultConfig {
         applicationId = "com.aagamshah.personalspace"
@@ -42,6 +40,22 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":presentation"))
+    implementation(project(":data"))
+
+    // Koin Setup
+    implementation(libs.io.insert.koin.android)
+    implementation(libs.io.insert.koin.compose)
+
+    // Compose specific lifecycle dependencies
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    // Coil
+    implementation(libs.io.coil.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
