@@ -21,8 +21,14 @@ fun PostDto.toDomain(): Post {
     return Post(
         id = this.id,
         username = this.username,
+        userProfileIcon = this.userProfileIcon,
         type = mapPostType(this.type),
-        like = this.like,
+        imageUrl = this.imageUrl,
+        videoUrl = this.videoUrl,
+        caption = this.caption,
+        likesCount = this.likesCount,
+        commentsCount = this.commentsCount,
+        timestamp = this.timestamp,
         comments = this.comments.map { it.toDomain() }
     )
 }
@@ -39,7 +45,9 @@ fun CommentDto.toDomain(): CommentsModel {
     return CommentsModel(
         id = this.id,
         username = this.username,
+        userProfileIcon = this.userProfileIcon,
         comment = this.comment,
+        commentLikesCount = this.commentLikesCount,
         timestamp = this.timestamp
     )
 }
@@ -48,10 +56,23 @@ fun PostWithComments.toDomain(): Post {
     return Post(
         id = this.post.id,
         username = this.post.username,
+        userProfileIcon = this.post.userProfileIcon,
         type = mapPostType(this.post.type),
-        like = this.post.like,
+        imageUrl = this.post.imageUrl,
+        videoUrl = this.post.videoUrl,
+        caption = this.post.caption,
+        likesCount = this.post.likesCount,
+        commentsCount = this.post.commentsCount,
+        timestamp = this.post.timestamp,
         comments = this.comments.map {
-            CommentsModel(it.id, it.username, it.comment, it.timestamp)
+            CommentsModel(
+                it.id,
+                it.username,
+                it.userProfileIcon,
+                it.comment,
+                it.commentLikesCount,
+                it.timestamp
+            )
         }
     )
 }
@@ -60,8 +81,14 @@ fun PostDto.toEntity(): PostEntity {
     return PostEntity(
         id = this.id,
         username = this.username,
+        userProfileIcon = this.userProfileIcon,
         type = this.type,
-        like = this.like
+        imageUrl = this.imageUrl,
+        videoUrl = this.videoUrl,
+        caption = this.caption,
+        likesCount = this.likesCount,
+        commentsCount = this.commentsCount,
+        timestamp = this.timestamp
     )
 }
 
@@ -69,7 +96,9 @@ fun CommentDto.toEntity(postId: Int): CommentEntity {
     return CommentEntity(
         id = this.id,
         username = this.username,
+        userProfileIcon = this.userProfileIcon,
         comment = this.comment,
+        commentLikesCount = this.commentLikesCount,
         timestamp = this.timestamp,
         postId = postId
     )

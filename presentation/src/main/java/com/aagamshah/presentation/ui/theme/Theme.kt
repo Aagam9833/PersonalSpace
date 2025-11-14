@@ -1,6 +1,5 @@
-package com.aagamshah.personalspace.ui.theme
+package com.aagamshah.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -36,7 +35,6 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun PersonalSpaceTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -52,7 +50,7 @@ fun PersonalSpaceTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = AppTypography,
         content = content
     )
 }

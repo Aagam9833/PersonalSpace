@@ -10,8 +10,14 @@ data class PostEntity(
     @PrimaryKey
     val id: Int,
     val username: String,
+    val userProfileIcon: String,
     val type: String,
-    val like: Int
+    val imageUrl: String?,
+    val videoUrl: String?,
+    val caption: String?,
+    val likesCount: Int,
+    val commentsCount: Int,
+    val timestamp: Long,
 )
 
 @Entity(
@@ -29,7 +35,9 @@ data class CommentEntity(
     @PrimaryKey
     val id: Int,
     val username: String,
+    val userProfileIcon: String,
     val comment: String,
+    val commentLikesCount: Int,
     val timestamp: Long,
 
     @ColumnInfo(name = "post_id", index = true)

@@ -18,7 +18,7 @@ fun MainContainerScreen() {
     ) { innerPadding ->
         InternalTabNavigation(
             navController = tabNavController,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())
         )
     }
 }

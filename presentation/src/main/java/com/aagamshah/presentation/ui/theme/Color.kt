@@ -1,4 +1,4 @@
-package com.aagamshah.personalspace.ui.theme
+package com.aagamshah.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
