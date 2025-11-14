@@ -2,6 +2,7 @@ package com.aagamshah.presentation.screens.feedscreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aagamshah.domain.model.CommentsModel
 import com.aagamshah.domain.usecase.GetFeedUseCase
 import com.aagamshah.domain.util.Resource
 import kotlinx.coroutines.channels.Channel
@@ -30,8 +31,8 @@ class FeedViewModel(
         when (intent) {
             is FeedIntent.LoadFeed -> loadFeed(isRefreshing = false)
             is FeedIntent.RefreshFeed -> loadFeed(isRefreshing = true)
-            is FeedIntent.LikePost -> handleLikePost(intent.postId)
-            is FeedIntent.MoreComments -> showMoreComments(intent.postId)
+            is FeedIntent.ShowCommentsBottomSheet -> showCommentsBottomSheet(intent.comments)
+            is FeedIntent.DismissCommentsBottomSheet -> dismissCommentsBottomSheet()
         }
     }
 
@@ -61,19 +62,28 @@ class FeedViewModel(
         }
     }
 
-    private fun handleLikePost(postId: Int) {
-        // Implementation for liking a post
-        // update state locally or call use case
-    }
-
     private fun sendEffect(effect: FeedEffect) {
         viewModelScope.launch {
             _effect.send(effect)
         }
     }
 
-    private fun showMoreComments(postId: Int) {
+    private fun showCommentsBottomSheet(comments: List<CommentsModel>) {
+        _uiState.update {
+            it.copy(
+                showCommentsSheet = true,
+                comments = comments
+            )
+        }
+    }
 
+    private fun dismissCommentsBottomSheet() {
+        _uiState.update {
+            it.copy(
+                showCommentsSheet = false,
+                comments = emptyList()
+            )
+        }
     }
 
 }

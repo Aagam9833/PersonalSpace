@@ -1,5 +1,6 @@
 package com.aagamshah.presentation.composables
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,10 +28,11 @@ import coil.transform.CircleCropTransformation
 import com.aagamshah.domain.model.Post
 import com.aagamshah.presentation.R
 import com.aagamshah.presentation.extensions.toTimeAgo
+import com.aagamshah.presentation.screens.feedscreen.FeedIntent
 import com.aagamshah.presentation.ui.theme.AppTypography
 
 @Composable
-fun PostComposable(post: Post) {
+fun PostComposable(post: Post, onEvent: (FeedIntent) -> Unit) {
 
     Column(
         modifier = Modifier
@@ -77,7 +79,7 @@ fun PostComposable(post: Post) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -93,7 +95,8 @@ fun PostComposable(post: Post) {
                 Spacer(Modifier.width(width = 8.dp))
                 Icon(
                     painter = painterResource(R.drawable.ic_comment),
-                    contentDescription = "Comment Icon"
+                    contentDescription = "Comment Icon",
+                    modifier = Modifier.clickable { onEvent(FeedIntent.ShowCommentsBottomSheet(post.comments)) }
                 )
                 Spacer(Modifier.width(width = 2.dp))
                 Text(

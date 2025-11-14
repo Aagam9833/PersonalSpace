@@ -34,17 +34,9 @@ val postsDummyJson = """
       "videoUrl": "",
       "caption": "",
       "likesCount": 1,
-      "commentsCount": 1,
+      "commentsCount": 0,
       "timestamp": 1762943505000,
       "comments": [
-        {
-          "id": 2,
-          "username": "Anonymous",
-          "userProfileIcon": "https://loremfaces.net/24/id/1.jpg",
-          "comment": "Excellent",
-          "commentLikesCount": 0,
-          "timestamp": 1762943555000
-        }
       ]
     }
   ]

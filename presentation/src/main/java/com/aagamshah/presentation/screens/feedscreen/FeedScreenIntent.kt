@@ -6,8 +6,8 @@ import com.aagamshah.domain.model.Post
 sealed interface FeedIntent {
     data object LoadFeed : FeedIntent
     data object RefreshFeed : FeedIntent
-    data class LikePost(val postId: Int) : FeedIntent
-    data class MoreComments(val postId: Int) : FeedIntent
+    data class ShowCommentsBottomSheet(val comments: List<CommentsModel>) : FeedIntent
+    data object DismissCommentsBottomSheet : FeedIntent
 }
 
 sealed interface FeedEffect {
@@ -17,5 +17,6 @@ sealed interface FeedEffect {
 data class FeedUiState(
     val posts: List<Post> = emptyList(),
     val isLoading: Boolean = false,
-    val showMoreComments: List<CommentsModel> = emptyList()
+    val showCommentsSheet: Boolean = false,
+    val comments: List<CommentsModel> = emptyList()
 )
